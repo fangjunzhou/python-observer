@@ -114,7 +114,7 @@ class Observable(object):
         :type new_state: A tuple of arbitrary content.
         """
         for observer in self._observers:
-            observer.update(new_state)
+            observer.update(*new_state)
 
 
 if __name__ == "__main__":
@@ -129,7 +129,7 @@ if __name__ == "__main__":
             super(NewValueSubscriber, self).__init__()
 
         def update(self, new_value):
-            print('{} received new value: {}'.format(self.name, new_value[0]))
+            print('{} received new value: {}'.format(self.name, new_value))
 
 
     class NewValuePublisher(Observable):
